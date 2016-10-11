@@ -55,11 +55,7 @@ public class PlayerControl : MonoBehaviour
     }
 
     void Flip() {
-<<<<<<< e3d069f6f31e907f54b29523da4a72517f3f7f0d
-        
-=======
         GameObject.Find("World").GetComponent<WorldController>().Flip();
->>>>>>> Initial Commit version 2
        // transform.Rotate(new Vector3(0, 180 + transform.rotation.y, 0));
     }
 }

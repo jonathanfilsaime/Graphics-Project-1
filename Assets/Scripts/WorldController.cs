@@ -36,4 +36,8 @@ public class WorldController : MonoBehaviour {
 	void Update () {
 	
 	}
+
+    public void Flip() {
+
+    }
 }
