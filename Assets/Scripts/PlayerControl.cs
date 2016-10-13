@@ -4,16 +4,21 @@ using System.Collections;
 public class PlayerControl : MonoBehaviour
 {
     [HideInInspector]
-    public bool reverse = false;
+    public bool isUp = false;
+    [HideInInspector]
+    public bool isDown = false;
 
+    public float gravity;
     public float speed;
     public float maxSpeed;
-    public float speedIncreaseFactor;
 
     private Animator anim;
     private Rigidbody rb;
     private Collider coll;
     private CharacterController controller;
+
+    private Vector3 moveDirection = Vector3.zero;
+    private float verticalSpeed = 0;
 
     void Awake() {
         //coll = GetComponent<Collider>();
@@ -29,33 +34,43 @@ public class PlayerControl : MonoBehaviour
 
     // Update is called once per frame
     void Update() {
-        if (Input.GetKeyDown(KeyCode.Space)) // change to "Reverse"
+        if (Input.GetKeyDown(KeyCode.Space) && (this.isUp || this.isDown)) // change to "Reverse"
         {
+            this.isUp = false;
+            this.isDown = false;
             Flip();
-            Physics.gravity = -Physics.gravity;
         }
 
-        controller.SimpleMove(Vector3.right * speed);
-        speed += speed * speedIncreaseFactor; // change to be dependent on time
-        speed = speed > maxSpeed ? maxSpeed : speed;
+        moveDirection = Vector3.right;
+        verticalSpeed -= gravity * Time.deltaTime;
 
-        Debug.Log(controller.isGrounded);
+        // if speed > 0
+        // line cast up
+        // else if speed < 0
+        // line cast down
+        if (verticalSpeed > 0) {
+            if(Physics.Linecast(this.gameObject.transform.position, this.gameObject.transform.position + new Vector3(0, 0.6f, 0))) {
+                this.isUp = true;
+                verticalSpeed = 0;
+            }
+        } else if(verticalSpeed < 0) {
+            if (Physics.Linecast(this.gameObject.transform.position, this.gameObject.transform.position - new Vector3(0, 0.6f, 0))) {
+                this.isDown = true;
+                verticalSpeed = 0;
+            }
+        }
+
+        moveDirection *= speed;
+        moveDirection.y = verticalSpeed;
+        controller.Move(moveDirection * Time.deltaTime);
     }
 
     void FixedUpdate() {
-        
-    }
 
-    void OnControllerColliderHit(ControllerColliderHit hit) {
-        Rigidbody body = hit.collider.attachedRigidbody;
-        if (body == null || body.isKinematic)
-            return;
-
-        Debug.Log(hit.gameObject);
     }
 
     void Flip() {
-        GameObject.Find("World").GetComponent<WorldController>().Flip();
-       // transform.Rotate(new Vector3(0, 180 + transform.rotation.y, 0));
+        this.gravity = -this.gravity;
+      //  this.transform.Rotate(Vector3.right, 180);
     }
 }
