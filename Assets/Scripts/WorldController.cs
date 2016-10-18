@@ -15,6 +15,11 @@ public class WorldController : MonoBehaviour {
 
         // what everything is
         GameObject block = GameObject.CreatePrimitive(PrimitiveType.Cube);
+        GameObject triggerZone = new GameObject("DeathZone");
+        triggerZone.isStatic = true;
+        triggerZone.AddComponent<BoxCollider>();
+        triggerZone.GetComponent<BoxCollider>().isTrigger = true;
+        triggerZone.AddComponent<DeathZone>();
         
         // parent
         root = Instantiate(block);
@@ -25,6 +30,10 @@ public class WorldController : MonoBehaviour {
         for (int i = 1; i < limit; i++)
         {
             if (i % 10 == 0 || i % 10 == 1) {
+                GameObject tz = Instantiate(triggerZone);
+                tz.transform.position = new Vector3(i * 1f, -2, 0);
+                tz.transform.rotation = Quaternion.identity;
+                tz.transform.SetParent(root.transform);
                 continue;
             }
             GameObject go = Instantiate(block);
@@ -44,6 +53,7 @@ public class WorldController : MonoBehaviour {
         }
 
         Destroy(block);
+        Destroy(triggerZone);
 	}
 	
 	// Update is called once per frame

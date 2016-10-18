@@ -52,11 +52,15 @@ public class PlayerControl : MonoBehaviour
             if(Physics.Linecast(this.gameObject.transform.position, this.gameObject.transform.position + new Vector3(0, 0.6f, 0))) {
                 this.isUp = true;
                 verticalSpeed = 0;
+            } else {
+                this.isUp = false;
             }
         } else if(verticalSpeed < 0) {
             if (Physics.Linecast(this.gameObject.transform.position, this.gameObject.transform.position - new Vector3(0, 0.6f, 0))) {
                 this.isDown = true;
                 verticalSpeed = 0;
+            } else {
+                this.isDown = false;
             }
         }
 
