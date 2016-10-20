@@ -75,6 +75,6 @@ public class PlayerControl : MonoBehaviour
 
     void Flip() {
         this.gravity = -this.gravity;
-      //  this.transform.Rotate(Vector3.right, 180);
+		GetComponent<SpriteRenderer> ().flipY = !GetComponent<SpriteRenderer> ().flipY;
     }
 }
