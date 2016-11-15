@@ -7,8 +7,6 @@ public class UIController : MonoBehaviour {
     public Text scoreText;
     public Text livesText;
     public Text speedText;
-	public GameObject gameOverPanel;
-	public Text gameOverText;
 
     private int score;
     private float speed;
@@ -18,9 +16,8 @@ public class UIController : MonoBehaviour {
 	private AsyncOperation async;
  	// Use this for initialization
 
-	void awake()
-	{
-		gameOverPanel.SetActive (false);
+	void Awake() {
+
 	}
 
 	void Start () {
@@ -36,10 +33,6 @@ public class UIController : MonoBehaviour {
         speed = GameObject.Find("Player").GetComponent<PlayerControl>().speed;
         speedText.text = "Speed: " + speed;
 
-		if (GameObject.Find ("Player").GetComponent<PlayerControl> ().moveDirection.y > 30 ||
-		    GameObject.Find ("Player").GetComponent<PlayerControl> ().moveDirection.y < -30) {
-			StartCoroutine(LoadNewScene());
-		}
 	}
 
 	IEnumerator LoadNewScene()

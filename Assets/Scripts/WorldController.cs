@@ -113,10 +113,8 @@ public class WorldController : MonoBehaviour {
 
 	public void place(Vector3 blocks, int i)
 	{
-		Debug.Log ("placing block");
 		if(blocks.z == -1)
 		{
-			Debug.Log ("empty block");
 			return;
 		}
 
