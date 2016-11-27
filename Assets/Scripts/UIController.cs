@@ -8,7 +8,7 @@ public class UIController : MonoBehaviour {
     public Text livesText;
     public Text speedText;
 
-    private int score;
+    public int score = 0;
     private float speed;
 	public int scene; //make better
 	public Text text; //make better
@@ -22,17 +22,25 @@ public class UIController : MonoBehaviour {
 
 	void Start () {
         score = 0;
+		scoreText.fontSize = 40;
+		scoreText.fontStyle = FontStyle.Bold;
+		scoreText.color = Color.red;
         speed = GameObject.Find("Player").GetComponent<PlayerControl>().speed;
     }
 	
 	// Update is called once per frame
 	void Update () {
-        score += (int)(100*Time.deltaTime);
+        
         scoreText.text = "Score: " + score;
 
         speed = GameObject.Find("Player").GetComponent<PlayerControl>().speed;
         speedText.text = "Speed: " + speed;
 
+	}
+
+	public void SetScore(int i)
+	{
+		score += i;
 	}
 
 	IEnumerator LoadNewScene()
