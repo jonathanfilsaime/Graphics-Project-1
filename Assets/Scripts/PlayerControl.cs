@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerControl : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class PlayerControl : MonoBehaviour
 	public float speed;
 	public float maxSpeed;
     public Text deathText;
+    public Text continueText;
 
 	private Animator anim;
 	private Rigidbody rb;
@@ -32,7 +34,8 @@ public class PlayerControl : MonoBehaviour
 
 	// Use this for initialization
 	void Start() {
-        this.deathText.text = "";
+        this.deathText.enabled = false;
+        this.continueText.enabled = false;
 	}
 
 	// Update is called once per frame
@@ -94,6 +97,13 @@ public class PlayerControl : MonoBehaviour
 
     void Kill() {
         this.dead = true;
-        this.deathText.text = "Game Over";
+        this.deathText.enabled = true;
+        this.continueText.enabled = true;
+        StartCoroutine("LoadAfterDeath");
+    }
+
+    IEnumerator LoadAfterDeath() {
+        yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Return));
+        SceneManager.LoadScene("MainMenu");
     }
 }

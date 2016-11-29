@@ -1,0 +1,47 @@
+Initialize engine version: 5.4.1f1 (649f48bbbf0f)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: Intel(R) HD Graphics Family (ID=0xa16)
+    Vendor:   Intel
+    VRAM:     1136 MB
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\Users\steven\Documents\Unity Projects\Graphics Project\GravityDude_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\steven\Documents\Unity Projects\Graphics Project\GravityDude_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\steven\Documents\Unity Projects\Graphics Project\GravityDude_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\steven\Documents\Unity Projects\Graphics Project\GravityDude_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\steven\Documents\Unity Projects\Graphics Project\GravityDude_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\steven\Documents\Unity Projects\Graphics Project\GravityDude_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: C:\Users\steven\Documents\Unity Projects\Graphics Project\GravityDude_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading C:\Users\steven\Documents\Unity Projects\Graphics Project\GravityDude_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: C:\Users\steven\Documents\Unity Projects\Graphics Project\GravityDude_Data\Managed\UnityEngine.Analytics.dll (this message is harmless)
+Loading C:\Users\steven\Documents\Unity Projects\Graphics Project\GravityDude_Data\Managed\UnityEngine.Analytics.dll into Unity Child Domain
+- Completed reload, in  0.209 seconds
+Platform assembly: C:\Users\steven\Documents\Unity Projects\Graphics Project\GravityDude_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: C:\Users\steven\Documents\Unity Projects\Graphics Project\GravityDude_Data\Managed\System.dll (this message is harmless)
+desktop: 2160x1440 59Hz; virtual: 2160x1440 at 0,0
+<RI> Initializing input.
+XInput1_3.dll not found. Trying XInput9_1_0.dll instead...
+<RI> Input initialized.
+<RI> Initialized touch support.
+UnloadTime: 1.429936 ms
+Setting up 1 worker threads for Enlighten.
+  Thread -> id: e58 -> priority: 1 
+Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 9.076793 ms
+
+Unloading 16 unused Assets to reduce memory usage. Loaded Objects now: 217.
+Total: 0.299699 ms (FindLiveObjects: 0.020527 ms CreateObjectMapping: 0.019295 ms MarkObjects: 0.240991 ms  DeleteObjects: 0.017653 ms)
+
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 1.026779 ms
+
+Unloading 11 unused Assets to reduce memory usage. Loaded Objects now: 8880.
+Total: 4.240544 ms (FindLiveObjects: 1.812567 ms CreateObjectMapping: 0.317353 ms MarkObjects: 1.549816 ms  DeleteObjects: 0.560397 ms)
+
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 11.785174 ms
+
+Unloading 719 unused Assets to reduce memory usage. Loaded Objects now: 386.
+Total: 1.777259 ms (FindLiveObjects: 0.179409 ms CreateObjectMapping: 0.091552 ms MarkObjects: 0.539869 ms  DeleteObjects: 0.965607 ms)
+

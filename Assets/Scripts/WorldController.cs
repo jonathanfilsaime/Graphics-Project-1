@@ -8,6 +8,10 @@ public class WorldController : MonoBehaviour {
 
 	GameObject block;
 	GameObject coins;
+    GameObject triggerZone;
+
+    public Material blockMaterial;
+    public Material coinMaterial;
 
 	private Vector3[] blockArrayBottom = new Vector3[]
 	{
@@ -166,10 +170,18 @@ public class WorldController : MonoBehaviour {
 	void Start () 
 	{
 		block = GameObject.CreatePrimitive (PrimitiveType.Cube);
+        block.GetComponent<MeshRenderer>().material = blockMaterial;
+
 		coins = GameObject.CreatePrimitive (PrimitiveType.Cylinder);
 		coins.AddComponent<CoinBehavior>();
-		coins.GetComponent<MeshRenderer> ().material.color = Color.yellow;
-		coins.GetComponent<CapsuleCollider> ().isTrigger = true; 
+        coins.GetComponent<MeshRenderer>().material = coinMaterial;
+		coins.GetComponent<CapsuleCollider> ().isTrigger = true;
+
+        triggerZone = GameObject.CreatePrimitive(PrimitiveType.Cube);
+        triggerZone.transform.localScale = new Vector3(1, 10, 1);
+        triggerZone.GetComponent<BoxCollider>().isTrigger = true;
+        triggerZone.AddComponent<SpeedZoneBehavior>();
+        triggerZone.GetComponent<MeshRenderer>().enabled = false;
 
 		for (int i = 0; i < 10; i++) 
 		{
@@ -183,23 +195,20 @@ public class WorldController : MonoBehaviour {
 			{
 				place (blocks, i);
 			}
+
+            GameObject zone = Instantiate(triggerZone);
+            zone.transform.position = new Vector3(blockArrayBottom.Length * i, 0, 0);
 		}
 
 		Destroy(block);
 		Destroy(coins);
-	}
-
-	// Update is called once per frame
-	void Update () {
-
+        Destroy(triggerZone);
 	}
 
 	public void place(Vector3 blocks, int i)
 	{
-		Debug.Log ("placing block");
 		if(blocks.z == -1)
 		{
-			Debug.Log ("empty block");
 			return;
 		}
 
@@ -226,7 +235,7 @@ public class WorldController : MonoBehaviour {
 			goCoins.transform.position = new Vector3(blocks.x,blocks.y+2,0.25f);
 			goCoins.transform.position = new Vector3(blocks.x,blocks.y+2,0.25f);
 			goCoins.transform.localScale = new Vector3 (1f, .1f, 1f);
-			goCoins.transform.eulerAngles = new Vector3 (90, 45, 0);
+			goCoins.transform.eulerAngles = new Vector3 (90, 0, 0);
 			goCoins.transform.SetParent(this.transform);
 		} 
 		else 

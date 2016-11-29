@@ -5,8 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class UIController : MonoBehaviour {
     public Text scoreText;
-    public Text livesText;
-    public Text speedText;
 
     public int score = 0;
     private float speed;
@@ -30,12 +28,7 @@ public class UIController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        
         scoreText.text = "Score: " + score;
-
-        speed = GameObject.Find("Player").GetComponent<PlayerControl>().speed;
-        speedText.text = "Speed: " + speed;
-
 	}
 
 	public void SetScore(int i)

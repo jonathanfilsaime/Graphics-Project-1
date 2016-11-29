@@ -9,8 +9,11 @@ public class CoinBehavior : MonoBehaviour
 	{
 		UIController wc = GameObject.FindObjectOfType(typeof(UIController)) as UIController;
 		i++;
-		Debug.Log ("value of i: " + i);
 		wc.score += i;
 		Destroy (this.gameObject);
 	}
+
+    public void Update() {
+        this.transform.Rotate(Vector3.back, 60 * Time.deltaTime, Space.Self);
+    }
 }
